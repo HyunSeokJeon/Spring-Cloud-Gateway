@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class InfoController {
 
-    @GetMapping("/user/info")
+    @GetMapping("/info")
     public String info(@Value("${server.port}") String port) {
         return "User 서비스 기본 동작 Port : " + port;
     }
