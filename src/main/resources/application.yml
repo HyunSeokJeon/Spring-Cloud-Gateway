@@ -23,6 +23,7 @@ spring:
             - Path=/user/**
           filters:
             - RewritePath=/user/?(?<segment>.*), /$\{segment}
+            - CustomAuthFilter
 
         - id: order-api
           # 포워딩할 주소 http://localhost:8090/order -> http://localhost:18020 포워딩
