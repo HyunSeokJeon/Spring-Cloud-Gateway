@@ -12,24 +12,3 @@ spring:
   application:
     name: gateway-service
 
-  cloud:
-    gateway:
-      routes:
-        - id: user-api
-          # 포워딩할 주소 http://localhost:8090/user -> http://localhost:18030 포워딩
-          uri: lb://USER-API
-          # 해당 gateway 서버의 /user/** 들어오는 요청은 user-api로 인식
-          predicates:
-            - Path=/user/**
-          filters:
-            - RewritePath=/user/?(?<segment>.*), /$\{segment}
-            - CustomAuthFilter
-
-        - id: order-api
-          # 포워딩할 주소 http://localhost:8090/order -> http://localhost:18020 포워딩
-          uri: lb://ORDER-API
-          # 해당 gateway 서버의 /order/** 들어오는 요청은 order-api 로 인식
-          predicates:
-            - Path=/order/**
-          filters:
-            - RewritePath=/order/?(?<segment>.*), /$\{segment}
